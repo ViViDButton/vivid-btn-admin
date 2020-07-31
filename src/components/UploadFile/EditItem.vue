@@ -121,13 +121,15 @@
 
                 add_voice(formData).then(resp => {
                     console.log(resp.data);
-                    this.$message({
-                        message: '添加成功',
-                        type: 'success'
-                    });
-                    this.$emit('push-done')
-                }).catch(err => {
-                    this.$message.error('添加失败，请检查表单是否填写完整');
+                    if(resp.data.code !== 403) {
+                        this.$message({
+                            message: '添加成功',
+                            type: 'success'
+                        });
+                        this.$emit('push-done')
+                    }else {
+                        this.$message.error(resp.data.message)
+                    }
                 })
             },
             submit() {

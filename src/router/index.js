@@ -11,24 +11,24 @@ Vue.use(VueRouter)
     component: Login
   },
   {
-    path: '/voice',
+    path: '/button/voice',
     name: 'Voice',
-    component: () => import('@/views/voice.vue')
+    component: () => import('../views/button_manager/voice_manager')
   },
   {
     path: '/vtuber',
     name: 'Vtuber',
-    component: () => import('@/views/vtuberManage.vue')
+    component: () => import('../views/vtuber_manager')
   },
   {
-    path: '/group',
+    path: '/button/group',
     name: 'VoiceGroupManager',
-    component: () => import('@/views/group_manager.vue')
+    component: () => import('../views/button_manager/group_manager')
   },
   {
     path: '/user',
     name: 'UserManager',
-    component: () => import('@/views/user_manager.vue')
+    component: () => import('../views/user_manager/user_manager')
   },
   {
     path: '/user/group',

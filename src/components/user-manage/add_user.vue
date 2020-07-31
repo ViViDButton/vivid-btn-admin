@@ -27,8 +27,13 @@
             <el-form-item label="Email" prop="email">
                 <el-input v-model="form.email" type="email"></el-input>
             </el-form-item>
-            <el-form-item label="超级管理员" prop="is_super">
-                <el-checkbox v-model="form.is_super"></el-checkbox>
+            <el-form-item label="用户组" prop="is_super">
+                <el-select v-model="form.group">
+                    <el-option v-for="item in group_list"
+                               :key="item.group_name"
+                               :label="item.group_name"
+                               :value="item.group_name"></el-option>
+                </el-select>
             </el-form-item>
             <el-form-item prop="submit">
                 <el-button type="primary" @click="submitForm">添加</el-button>
@@ -39,7 +44,7 @@
 </template>
 
 <script>
-    import {add_user} from "../../network";
+    import {add_user, get_group_list} from "../../network";
 
     export default {
         name: "add_user",
@@ -71,7 +76,7 @@
                     email: '',
                     pwd: '',
                     confirm_pwd: '',
-                    is_super: false
+                    group: ''
                 },
                 rules: {
                     user_name: [
@@ -86,7 +91,8 @@
                     confirm_pwd: [
                         { validator: validatePass2, trigger: 'blur' }
                     ],
-                }
+                },
+                group_list: []
             }
         },
         methods: {
@@ -95,7 +101,7 @@
                     if (valid) {
                         //提交
                         let t = this.form
-                        add_user(t.user_name, t.pwd, t.email, t.first_name, t.last_name, t.is_super).then(resp => {
+                        add_user(t.user_name, t.pwd, t.email, t.first_name, t.last_name, t.group).then(resp => {
                             console.log(resp.data)
                             this.$message.success("操作成功")
                             this.$emit('add-user-done')
@@ -104,7 +110,16 @@
                         return false;
                     }
                 });
+            },
+            load_group_list() {
+                get_group_list().then(resp => {
+                    console.log(resp.data)
+                    this.group_list = resp.data.data
+                })
             }
+        },
+        mounted() {
+            this.load_group_list()
         }
     }
 </script>

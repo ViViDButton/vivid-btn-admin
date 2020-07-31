@@ -33,18 +33,23 @@
               <i class="el-icon-message-solid"></i>
               <span>Vtuber管理</span>
             </el-menu-item>
-            <el-submenu index="/">
+            <el-submenu index="/button">
               <template slot="title">
                 <i class="el-icon-circle-plus"></i>
                 <span>按钮管理</span>
               </template>
-              <el-menu-item index="/group">分组管理</el-menu-item>
-              <el-menu-item index="/voice">声音管理</el-menu-item>
+              <el-menu-item index="/button/group">分组管理</el-menu-item>
+              <el-menu-item index="/button/voice">声音管理</el-menu-item>
+              <el-menu-item index="/button/batch-upload">批量上传</el-menu-item>
             </el-submenu>
-            <el-menu-item index="/user">
-              <i class="el-icon-user-solid"></i>
-              <span slot="title">用户管理</span>
-            </el-menu-item>
+            <el-submenu index="/user">
+              <template slot="title">
+                <i class="el-icon-user-solid"></i>
+                <span>用户管理</span>
+              </template>
+              <el-menu-item index="/user">用户管理</el-menu-item>
+              <el-menu-item index="/user/group">权限组管理</el-menu-item>
+            </el-submenu>
             <el-menu-item index="/about">
               <i class="el-icon-s-help"></i>
               <span slot="title">关于</span>

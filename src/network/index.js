@@ -111,17 +111,14 @@ export function delete_user(uid='') {
     return server.post('/delete-user',formData)
 }
 
-export function add_user(user_name, pwd, email, fn, ln, is_super) {
-    let super_user = 'false'
-    if (is_super)
-        super_user = 'true'
+export function add_user(user_name, pwd, email, fn, ln, group) {
     let formData = new FormData()
     formData.append('user_name', user_name)
     formData.append('first_name', fn)
     formData.append('last_name', ln)
     formData.append('email', email)
     formData.append('pwd', pwd)
-    formData.append('super', super_user)
+    formData.append('group', group)
     return server.post('/add-user', formData)
 }
 
@@ -129,3 +126,16 @@ export function add_user(user_name, pwd, email, fn, ln, is_super) {
 export function get_group_list() {
     return server.get('/get-group-list')
 }
+
+export function get_permission_list() {
+    return server.get('/get-permission-list')
+}
+
+
+
+// 通用封装方法
+
+export function net_post(url, data={}, config={}) {
+    return server.post(url, data, config)
+}
+

@@ -43,8 +43,8 @@
 </template>
 
 <script>
-    import {get_vtb, get_group, delete_group} from "../network";
-    import add_group from "../components/group_manage/add_group";
+    import {get_vtb, get_group, delete_group} from "../../network";
+    import add_group from "../../components/group_manage/add_group";
 
     export default {
         name: "vtuberManage",

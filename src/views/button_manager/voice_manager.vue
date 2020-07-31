@@ -56,8 +56,8 @@
 </template>
 
 <script>
-    import {get_voice, get_group, delete_voice, get_vtb} from "../network";
-    import EditItem from "../components/UploadFile/EditItem";
+    import {get_voice, get_group, delete_voice, get_vtb} from "../../network";
+    import EditItem from "../../components/UploadFile/EditItem";
 
     export default {
         name: "test",

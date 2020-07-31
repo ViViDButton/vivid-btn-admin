@@ -17,8 +17,8 @@
                     filter-placement="bottom-end">
                 <template slot-scope="scope">
                     <el-tag
-                            :type="scope.row.is_super?'primary':'success'"
-                            disable-transitions>{{scope.row.is_super?'超级管理员':'管理员'}}</el-tag>
+                            :type="scope.row.is_super?'danger':'primary'"
+                            disable-transitions>{{scope.row.group}}</el-tag>
                 </template>
             </el-table-column>
             <el-table-column
@@ -57,8 +57,8 @@
 </template>
 
 <script>
-    import {list_user, change_user_status, delete_user} from "../network";
-    import add_user from "../components/user-manage/add_user";
+    import {list_user, change_user_status, delete_user} from "../../network";
+    import add_user from "../../components/user-manage/add_user";
 
     export default {
         name: "user_manager",
@@ -78,6 +78,7 @@
                         this.$message.error(resp.data.message)
                     else
                         this.user_list = resp.data.list
+                    console.log(this.user_list = resp.data.list)
                 })
             },
             change_status(uid) {
