@@ -34,6 +34,11 @@ Vue.use(VueRouter)
     path: '/user/group',
     name: 'UserGroupManager',
     component: () => import('../views/user_manager/group_manager')
+  },
+  {
+    path: '/button/batch-upload',
+    name: 'BatchUpload',
+    component: () => import('../views/button_manager/upload_manager')
   }
 ]
 

@@ -52,6 +52,10 @@ export function add_vtb(name, bid, yid) {
 
 //修改
 
+export function change_voice(data) {
+    return server.post('/change-voice', data)
+}
+
 //删除
 
 export function delete_voice(params) {
@@ -137,5 +141,8 @@ export function get_permission_list() {
 
 export function net_post(url, data={}, config={}) {
     return server.post(url, data, config)
+}
+export function net_get(url, config={}) {
+    return server.post(url, config)
 }
 
