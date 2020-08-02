@@ -39,6 +39,11 @@ Vue.use(VueRouter)
     path: '/button/batch-upload',
     name: 'BatchUpload',
     component: () => import('../views/button_manager/upload_manager')
+  },
+  {
+    path: '/translate',
+    name: 'Translate',
+    component: () => import('../views/translate_manager/translate_manager')
   }
 ]
 

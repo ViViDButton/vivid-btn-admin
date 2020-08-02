@@ -42,6 +42,10 @@
               <el-menu-item index="/button/voice">声音管理</el-menu-item>
               <el-menu-item index="/button/batch-upload">批量上传</el-menu-item>
             </el-submenu>
+            <el-menu-item index="/translate">
+              <i class="el-icon-message-solid"></i>
+              <span>翻译台</span>
+            </el-menu-item>
             <el-submenu index="/user">
               <template slot="title">
                 <i class="el-icon-user-solid"></i>
