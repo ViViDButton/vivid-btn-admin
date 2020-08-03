@@ -4,7 +4,7 @@
         <el-col>
             <el-button type="primary" @click="drawer = true">上传文件</el-button>
 <!--            <el-button @click="submit_group_set();submit_vtb_set">提交</el-button>-->
-            <el-button @click="submit_group_set()">刷新</el-button>
+            <el-button @click="get_list()">刷新</el-button>
         </el-col>
 
         <el-table :data="default_voice_list">

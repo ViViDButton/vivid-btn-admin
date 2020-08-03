@@ -94,6 +94,10 @@
                     'id': r.data_id
                 }
                 delete_voice(formData).then(rep => {
+                    if (rep.data.code === 403) {
+                        this.$message.error(rep.data.message);
+                        return
+                    }
                     this.$message({
                         message: '已删除',
                         type: 'success'

@@ -10,7 +10,7 @@
                 <el-upload
                         class="upload-demo"
                         drag
-                        action="http://127.0.0.1:8000/t"
+                        action="http://127.0.0.1:8000/batch-upload"
                         multiple
                         :auto-upload="false"
                         :data="{'vtuber': form.vtb}"
