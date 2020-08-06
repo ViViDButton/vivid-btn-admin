@@ -6,6 +6,9 @@
                     <el-option v-for="item in vtb_list" :key="item.name" :label="item.name" :value="item.name"></el-option>
                 </el-select>
             </el-form-item>
+            <el-form-item label="定义为下一版本">
+                <el-checkbox v-model="form.next_ver"></el-checkbox>
+            </el-form-item>
             <el-form-item label="文件">
                 <el-upload
                         class="upload-demo"
@@ -30,20 +33,26 @@
 </template>
 
 <script>
-    import {get_vtb} from "../network";
+    import {get_vtb, net_post} from "../network";
 
     export default {
         name: "Batch_Upload",
         data() {
             return {
                 form: {
-                    vtb: ''
+                    vtb: '',
+                    next_ver: true
                 },
-                vtb_list: []
+                vtb_list: [],
             }
         },
         methods: {
             submit_upload() {
+                if (this.form.next_ver) {
+                    let fd = new FormData()
+                    fd.append('vtb', this.form.vtb)
+                    net_post('/next-ver', fd)
+                }
                 this.$refs.upload.submit()
             },
             emit_close() {

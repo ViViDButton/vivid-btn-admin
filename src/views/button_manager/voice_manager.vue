@@ -21,6 +21,11 @@
             <el-table-column prop="name" label="名称"></el-table-column>
             <el-table-column prop="click_count" label="点击计数"></el-table-column>
             <el-table-column prop="update" label="更新时间"></el-table-column>
+            <el-table-column label="TAG" width="120px">
+                <template slot-scope="scope">
+                    <el-input size="mini" v-model="scope.row.tag" @change="tagChange(scope.row.data_id, $event)"></el-input>
+                </template>
+            </el-table-column>
             <el-table-column label="操作">
                 <template slot-scope="scope">
                     <el-button
@@ -56,7 +61,7 @@
 </template>
 
 <script>
-    import {get_voice, get_group, delete_voice, get_vtb} from "../../network";
+    import {get_voice, get_group, delete_voice, get_vtb, net_post} from "../../network";
     import EditItem from "../../components/UploadFile/EditItem";
 
     export default {
@@ -139,6 +144,15 @@
                 console.log(this.table[idx])
                 this.$refs.audioMod.setAttribute('src', this.table[idx].path)
                 this.$refs.audioMod.play()
+            },
+            tagChange(id, val) {
+                let fd = new FormData()
+                fd.append('aim', id)
+                fd.append('tag', val)
+                net_post('/change-voice', fd).catch(() => {
+                    this.$message.error("操作失败")
+                    this.update_table()
+                })
             }
         }
     }

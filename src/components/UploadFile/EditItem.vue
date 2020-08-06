@@ -14,8 +14,8 @@
             <el-form-item label="语音名称" prop="voice">
                 <el-input v-model="form.voice"></el-input>
             </el-form-item>
-            <el-form-item label="更新版本(测试)" prop="ver">
-                <el-input v-model="form.ver"></el-input>
+            <el-form-item label="下一个版本" prop="next_ver">
+                <el-checkbox v-model="form.next_ver"></el-checkbox>
             </el-form-item>
             <el-form-item label="zh(中文)" prop="zh">
                 <el-input v-model="form.zh"></el-input>
@@ -67,6 +67,7 @@
                   ja: '',
                   en: '',
                   file: '',
+                  next_ver: false
               },
               vtb_list: [],
               group_list: [],
@@ -118,6 +119,7 @@
                 formData.append('zh', this.form.zh)
                 formData.append('ja', this.form.ja)
                 formData.append('en', this.form.en)
+                formData.append('next_ver', this.form.next_ver?'1':'0')
 
                 add_voice(formData).then(resp => {
                     console.log(resp.data);
